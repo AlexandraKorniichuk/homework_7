@@ -43,32 +43,48 @@ const images = [
   },
 ];
 const list3 = document.querySelector("#gallery");
-// list3.insertAdjacentElement("afterend", );
+for (const el of images) {
+  const img = `<img src="${el.url}" class="img">`;
+  list3.insertAdjacentHTML("beforebegin", img);
+}
 
 //task 4
 const div = document.querySelector("#counter");
 const val = document.querySelector("#value");
+const buttonDec = document.querySelector('[data-action="decrement"]');
+const buttonInc = document.querySelector('[data-action="increment"]');
 let counterValue = 0;
-const decrement = function (cv) {
-  cv--;
-};
-const increment = function (cv) {
-  cv++;
-};
-console.log(div.firstChild);
-div.firstChild.addEventListener("click", (event) => {
-  decrement(counterValue);
+const decrement = function () {
   console.log(counterValue);
-});
-div.lastChild.addEventListener("click", (event) => {
-  increment(counterValue);
+  return (counterValue -= 1);
+};
+const increment = function () {
   console.log(counterValue);
+  return (counterValue += 1);
+};
+buttonDec.addEventListener("click", () => {
+  if (val.textContent >= 1) {
+    decrement();
+    val.textContent = counterValue;
+  }
 });
+buttonInc.addEventListener("click", () => {
+  increment();
+  val.textContent = counterValue;
+});
+
 
 //task 5
 const input = document.querySelector("#name-input");
-let output = document.querySelector("#name-output");
-// console.log(output);
+let title = document.querySelector("#name-output");
 input.addEventListener("input", (event) => {
-  output.textContent = input;
+  console.log(input.value);
+  if (input.value !== "") {
+    title.textContent = input.value;
+  } else {
+    title.textContent = "незнакомец";
+  }
 });
+
+//task 6
+

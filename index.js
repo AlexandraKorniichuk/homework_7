@@ -73,7 +73,6 @@ buttonInc.addEventListener("click", () => {
   val.textContent = counterValue;
 });
 
-
 //task 5
 const input = document.querySelector("#name-input");
 let title = document.querySelector("#name-output");
@@ -87,4 +86,23 @@ input.addEventListener("input", (event) => {
 });
 
 //task 6
+const input6 = document.getElementById("validation-input");
+const dataLength = +input6.getAttribute("data-length");
+input6.classList.add("invalid");
+input6.addEventListener("blur", () => {
+  if (input6.value.length !== dataLength && input6.value.length !== 0) {
+    input6.classList.add("invalid");
+  }
+  if (input6.value.length === dataLength) {
+    input6.classList.add("valid");
+    input6.classList.remove("invalid");
+  }
+});
 
+//task 7
+const input7 = document.getElementById("font-size-control");
+const span = document.getElementById("text");
+input7.addEventListener("input", () => {
+  console.log(span.style.fontSize);
+  span.style.fontSize = input.value + "px";
+});
